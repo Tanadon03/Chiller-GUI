@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import*
 from tkinter import Menu, messagebox
 import customtkinter 
 import customtkinter as ctk
@@ -30,7 +31,7 @@ def Close():
         app.destroy()
 
 def About():
-    pass
+    tk.messagebox.showinfo("About Me","develop by Mr.Tanadon")
 
 class CustomCounter(ctk.CTkFrame):
     def __init__(self, master=None, default_value=25.0, height=170, width=240, *args, **kwargs):
@@ -95,15 +96,15 @@ frame_Menu = customtkinter.CTkFrame(master=app, height=560, width=170)
 frame_Menu.place(x=20, y=20)
 
 # Create a button to toggle appearance mode
-toggle_button = customtkinter.CTkButton(master=frame_Menu, text="Switch Theme", command=toggle_appearance_mode)
-toggle_button.place(relx=0.5, y=410, anchor="center")
+toggle_button = customtkinter.CTkButton(master=frame_Menu, text="Switch Theme", command=toggle_appearance_mode,width=140,height=40)
+toggle_button.place(relx=0.5, y=400, anchor="center")
 
 # Create a button to exit
-exit_button = customtkinter.CTkButton(master=frame_Menu, text="Close Program", command=Close)
-exit_button.place(relx=0.5, y=490, anchor="center")
+exit_button = customtkinter.CTkButton(master=frame_Menu, text="Close Program", command=Close,width=140,height=40)
+exit_button.place(relx=0.5, y=520, anchor="center")
 
-info_button = customtkinter.CTkButton(master=frame_Menu, text="About me", command=About)
-info_button.place(relx=0.5, y=450, anchor="center")
+info_button = customtkinter.CTkButton(master=frame_Menu, text="About me", command=About,width=140,height=40)
+info_button.place(relx=0.5, y=460, anchor="center")
 
 frame_Dashboard = customtkinter.CTkFrame(master=app, height=60, width=260)
 frame_Dashboard.place(x=210, y=20)
