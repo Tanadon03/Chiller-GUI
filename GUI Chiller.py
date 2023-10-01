@@ -42,17 +42,17 @@ class CustomCounter(ctk.CTkFrame):
         self.label = ctk.CTkLabel(self, text='{:.2f}'.format(self.value),font=("Arial", 24))
         self.label.place(x=90,y=20)
 
-        plus_button = ctk.CTkButton(self, text=">", command=self.increment1, width=90, height=35)
-        plus_button.place(x=130, y=70)
+        plus_button = ctk.CTkButton(self, text=">", command=self.increment1, width=105, height=40)
+        plus_button.place(x=125, y=70)
 
-        minus_button = ctk.CTkButton(self, text="<", command=self.decrement1, width=90, height=35)
-        minus_button.place(x=20, y=70)
+        minus_button = ctk.CTkButton(self, text="<", command=self.decrement1, width=105, height=40)
+        minus_button.place(x=10, y=70)
 
-        dbp_button = ctk.CTkButton(self, text=">>", command=self.increment, width=90, height=35)
-        dbp_button.place(x=130, y=120)
+        dbp_button = ctk.CTkButton(self, text=">>", command=self.increment, width=105, height=40)
+        dbp_button.place(x=125, y=120)
 
-        dbm_button = ctk.CTkButton(self, text="<<", command=self.decrement, width=90, height=35)
-        dbm_button.place(x=20, y=120)
+        dbm_button = ctk.CTkButton(self, text="<<", command=self.decrement, width=105, height=40)
+        dbm_button.place(x=10, y=120)
 
     def increment(self):
         self.value += 1
