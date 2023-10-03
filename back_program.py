@@ -3,6 +3,7 @@ import threading
 import queue
 import read_sensor as sensor
 import read_elec as Electric
+import sent_nodered as Nodered
 
 temp_tank = None
 temp_set = 25
@@ -58,6 +59,7 @@ def work():
             pass
         sensor.read_data()
         Electric.electric_data()
+        Nodered.sent_data_to_nodered()
         
         #print(Electric.Voltage)
         #print(Electric.Current)
@@ -65,7 +67,7 @@ def work():
         #print(sensor.get_TDS())
         #print(sensor.get_EC())
         #print(sensor.get_pH())
-        print(sensor.get_temperature())
+        #print(sensor.get_temperature())
         
         temp_tank=sensor.temperature
         if temp_tank - temp_set >= range_val:
