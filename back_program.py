@@ -68,6 +68,7 @@ def work():
         elif check_stage() == False:
             print("not working")
         print(temp_tank)
+        print(sensor.EC)
         time.sleep(1)
 
 work_thread = threading.Thread(target=work)
