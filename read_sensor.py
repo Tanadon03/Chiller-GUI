@@ -57,8 +57,8 @@ def read_data():
     tds=ec*0.5
     
     update_Q.put((temp,pH_value,ec,calibration,tds))
-    print(data1.registers)
-    print(data2.registers)
+    #print(data1.registers)
+    #print(data2.registers)
     
     try:
         while True:
@@ -71,6 +71,9 @@ def read_data():
             TDS=tds
     except queue.Empty:
         pass
+    
+    
+
 
 #tds (ppm)  EC (microS/cm  temperature (celcius))
 

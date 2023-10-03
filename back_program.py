@@ -2,6 +2,7 @@ import time
 import threading
 import queue
 import read_sensor as sensor
+import read_elec as Electric
 
 temp_tank = None
 temp_set = 25
@@ -56,7 +57,16 @@ def work():
         except queue.Empty:
             pass
         sensor.read_data()
-        print(sensor.temperature)
+        Electric.electric_data()
+        
+        #print(Electric.Voltage)
+        #print(Electric.Current)
+        #print(Electric.Power)
+        #print(sensor.get_TDS)
+        #print(sensor.get_EC)
+        #print(sensor.get_pH)
+        #print(sensor.get_temperature())
+        
         temp_tank=sensor.temperature
         if temp_tank - temp_set >= range_val:
             set_stage(1)
@@ -67,8 +77,6 @@ def work():
             print("working")
         elif check_stage() == False:
             print("not working")
-        print(temp_tank)
-        print(sensor.EC)
         time.sleep(1)
 
 work_thread = threading.Thread(target=work)

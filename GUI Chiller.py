@@ -6,6 +6,7 @@ import customtkinter as ctk
 import time
 import back_program as bp
 import read_sensor
+import read_elec
 
 
 app = customtkinter.CTk()
