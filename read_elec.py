@@ -13,7 +13,8 @@ PF=None
 Q=queue.Queue()
 
 ser = serial.Serial(
-        port='COM4',
+        #port='COM4',
+        port='COM5',
         baudrate=9600,
         bytesize=8,
         parity='N',
