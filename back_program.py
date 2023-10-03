@@ -1,8 +1,9 @@
 import time
 import threading
 import queue
+import read_sensor as sensor
 
-temp_tank = 30
+temp_tank = None
 temp_set = 25
 range_val = 0.5
 stage = True
@@ -54,7 +55,9 @@ def work():
                 stage = stage_value
         except queue.Empty:
             pass
-
+        sensor.read_data()
+        print(sensor.temperature)
+        temp_tank=sensor.temperature
         if temp_tank - temp_set >= range_val:
             set_stage(1)
         elif temp_tank - temp_set < 0:
@@ -64,7 +67,6 @@ def work():
             print("working")
         elif check_stage() == False:
             print("not working")
-        temp_tank -= 0.1
         print(temp_tank)
         time.sleep(1)
 
