@@ -4,6 +4,7 @@ from tkinter import Menu, messagebox
 import customtkinter 
 import customtkinter as ctk
 import time
+import back_program as bp
 
 
 app = customtkinter.CTk()
@@ -57,22 +58,30 @@ class CustomCounter(ctk.CTkFrame):
 
     def increment(self):
         self.value += 1
+        bp.temp_set=self.value
         self.update_label()
+        bp.update_queue.put((bp.temp_set,bp.range_val,bp.stage))
         print("Increment by 1: ", self.value)
 
     def decrement(self):
         self.value -= 1
+        bp.temp_set=self.value
         self.update_label()
+        bp.update_queue.put((bp.temp_set,bp.range_val,bp.stage))
         print("Decrement by 1: ", self.value)
 
     def increment1(self):
         self.value += 0.1
+        bp.temp_set=self.value
         self.update_label()
+        bp.update_queue.put((bp.temp_set,bp.range_val,bp.stage))
         print("Increment by 0.1: ", self.value)
 
     def decrement1(self):
         self.value -= 0.1
+        bp.temp_set=self.value
         self.update_label()
+        bp.update_queue.put((bp.temp_set,bp.range_val,bp.stage))
         print("Decrement by 0.1: ", self.value)
 
     def update_label(self):
