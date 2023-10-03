@@ -62,10 +62,10 @@ def work():
         #print(Electric.Voltage)
         #print(Electric.Current)
         #print(Electric.Power)
-        #print(sensor.get_TDS)
-        #print(sensor.get_EC)
-        #print(sensor.get_pH)
-        #print(sensor.get_temperature())
+        #print(sensor.get_TDS())
+        #print(sensor.get_EC())
+        #print(sensor.get_pH())
+        print(sensor.get_temperature())
         
         temp_tank=sensor.temperature
         if temp_tank - temp_set >= range_val:

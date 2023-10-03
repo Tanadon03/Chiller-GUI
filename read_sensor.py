@@ -10,7 +10,8 @@ TDS=None
 update_Q=queue.Queue()
 
 client = ModbusSerialClient(
-    port="COM3",
+    #port="COM3",
+    port="COM8",
     timeout=2,
     baudrate=9600,
     bytesize=8,
