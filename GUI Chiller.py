@@ -54,8 +54,8 @@ class CustomCounter(ctk.CTkFrame):
         self.create_widgets()
 
     def create_widgets(self):
-        self.label = ctk.CTkLabel(self, text='{:.2f}'.format(self.value),font=("Arial", 24))
-        self.label.place(x=90,y=20)
+        self.label = ctk.CTkLabel(self, text='{:.2f}'.format(self.value),font=("Arial", 28,"bold"))
+        self.label.place(x=85,y=20)
 
         plus_button = ctk.CTkButton(self, text=">", command=self.increment1, width=105, height=40,font=("Arial", 20))
         plus_button.place(x=125, y=70)
@@ -118,11 +118,11 @@ frame_Menu = customtkinter.CTkFrame(master=app, height=560, width=170)
 frame_Menu.place(x=20, y=20)
 
 #Image universities logo
-#usl_logo = Image.open('D:/Project/Basic_GUI/Project/Seal_of_King_Mongkut.png')
-#usl_logo = usl_logo.resize((160,160))
-#usl_Image = ImageTk.PhotoImage(usl_logo)
-#img_label = tk.Label(master=app,image=usl_Image,width=160,height=160,bg="#2B2B2B")
-#img_label.place(x=50,y=50)
+usl_logo = Image.open('D:/Project/Basic_GUI/Project/Seal_of_King_Mongkut.png')
+usl_logo = usl_logo.resize((160,160))
+usl_Image = ImageTk.PhotoImage(usl_logo)
+img_label = tk.Label(master=app,image=usl_Image,width=160,height=160,bg="#2B2B2B")
+img_label.place(x=50,y=50)
 
 # Create a button to toggle appearance mode
 toggle_button = customtkinter.CTkButton(master=frame_Menu, text="Switch Theme", command=toggle_appearance_mode,width=140,height=40)
