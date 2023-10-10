@@ -7,7 +7,7 @@ import sent_nodered as Nodered
 
 temp_tank = None
 temp_set = 25
-range_val = 0.5
+Range_val = 0.5
 stage = True
 
 # Create a queue for communication between threads
@@ -20,12 +20,7 @@ def set_stage(Stage):
         stage=True
     elif Stage==0:
         stage=False
-
-#show temperature
-def show_temperature():
-    global temp_tank
-    return temp_tank
-
+        
 #show range
 def show_range():
     global range
