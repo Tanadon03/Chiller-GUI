@@ -11,7 +11,6 @@ import read_elec as el
 #from PIL import Image
 #from PIL import ImageTk
 
-
 app = customtkinter.CTk()
 # Set the initial appearance mode
 appearance_mode = "dark"
@@ -24,11 +23,18 @@ def update_sensorvalue():
     TDS_val.configure(text=read.get_TDS())
     pH_val.configure(text=read.get_pH())
     electricity_charge_val.configure(text=el.get_power())
+    #update
+    voltage_val.configure(text=el.get_voltage())
+    current_val.configure(text=el.get_current())
+    energy_val.configure(text=el.get_energy())
+    pf_val.configure(text=el.get_powerfactor())
+    status_val.configure(text=el.check_status())
 # Function to update the timestamp label
 def update_timestamp():
     current_time = time.strftime("%Y-%m-%d %H:%M:%S")
     timestamp_label.configure(text=current_time)  # Use configure to update text
     update_sensorvalue()
+    status_val
     app.after(1000, update_timestamp)  # Update every 1000 milliseconds (1 second)
 
 # Function to toggle appearance mode
@@ -48,26 +54,26 @@ def About():
     tk.messagebox.showinfo("About Me","develop by Mr.Tanadon")
 
 class CustomCounter(ctk.CTkFrame):
-    def __init__(self, master=None, default_value=25.0, height=170, width=240, *args, **kwargs):
+    def __init__(self, master=None, default_value=25.0, height=255, width=340, *args, **kwargs): #170x240
         super().__init__(master, height=height, width=width, *args, **kwargs)
         self.value = default_value
         self.create_widgets()
 
     def create_widgets(self):
-        self.label = ctk.CTkLabel(self, text='{:.2f}'.format(self.value),font=("Arial", 28,"bold"))
-        self.label.place(x=85,y=20)
+        self.label = ctk.CTkLabel(self, text='{:.2f}'.format(self.value),font=("Courier", 36, "bold"))
+        self.label.place(x=115,y=30)
 
-        plus_button = ctk.CTkButton(self, text=">", command=self.increment1, width=105, height=40,font=("Arial", 20))
-        plus_button.place(x=125, y=70)
+        plus_button = ctk.CTkButton(self, text=">", command=self.increment1, width=145, height=60,font=("Courier", 26, "bold"))
+        plus_button.place(x=175, y=100)
 
-        minus_button = ctk.CTkButton(self, text="<", command=self.decrement1, width=105, height=40,font=("Arial", 20))
-        minus_button.place(x=10, y=70)
+        minus_button = ctk.CTkButton(self, text="<", command=self.decrement1, width=145, height=60,font=("Courier", 26, "bold"))
+        minus_button.place(x=20, y=100)
 
-        dbp_button = ctk.CTkButton(self, text=">>", command=self.increment, width=105, height=40,font=("Arial", 20))
-        dbp_button.place(x=125, y=120)
+        dbp_button = ctk.CTkButton(self, text=">>", command=self.increment, width=145, height=60,font=("Courier", 26, "bold"))
+        dbp_button.place(x=175, y=170)
 
-        dbm_button = ctk.CTkButton(self, text="<<", command=self.decrement, width=105, height=40,font=("Arial", 20))
-        dbm_button.place(x=10, y=120)
+        dbm_button = ctk.CTkButton(self, text="<<", command=self.decrement, width=145, height=60,font=("Courier", 26, "bold"))
+        dbm_button.place(x=20, y=170)
 
     def increment(self):
         self.value += 1
@@ -99,6 +105,23 @@ class CustomCounter(ctk.CTkFrame):
 
     def update_label(self):
         self.label.configure(text='{:.2f}'.format(self.value))
+
+## display status
+class CTkLabel(ctk.CTkFrame):
+    def __init__(self, master=None, **kwargs):
+        super().__init__(master, **kwargs)
+
+    def set_status(self, status):
+        if status == "Worst":
+            self.config(fg="#e51f1f", font=("Courier", 28, "bold"))
+        elif status == "Bad":
+            self.config(fg="#f2a134", font=("Courier", 28, "bold"))
+        elif status == "Warning!!!":
+            self.config(fg="#f7e379", font=("Courier", 28, "bold"))
+        elif status == "Good":
+            self.config(fg="#bbdb44", font=("Courier", 28, "bold"))
+        elif status == "Quality":
+            self.config(fg="#44ce1b", font=("Courier", 28, "bold"))
 
 # Create window
 #app = customtkinter.CTk()
@@ -154,11 +177,54 @@ frame_Dashboard.place(x=490, y=20)
 title = customtkinter.CTkLabel(master=frame_Dashboard, text="DATA", font=("Courier", 24, "bold"))
 title.place(relx=0.5, rely=0.5, anchor="center")
 
-frame_Control = customtkinter.CTkFrame(master=app)#, height=190, width=260
-frame_Control.place(x=210, y=100)
+###update
+frame_status_display = customtkinter.CTkFrame(master=app ,height=190, width=260)#
+frame_status_display.place(x=210, y=95)
+status_label = customtkinter.CTkLabel(master=frame_status_display,text="STATUS", font=("Courier", 24, "bold"))
+status_label.place(x=20, y=20)
+status_val = customtkinter.CTkLabel(master=frame_status_display,text="") 
+status_val.place(relx=0.35,rely=0.45)
+# Update the status_val label based on the check_status function
+status = bp.check_status()
+status_val.set_status(status)
+status_val.configure(text=status)
+
+frame_Control = customtkinter.CTkFrame(master=app, height=275, width=360)## old 670
+frame_Control.place(x=210, y=306)
+
+frame_status_voltage = customtkinter.CTkFrame(master=app, height=60,width=295)
+frame_status_voltage.place(x=585,y=306)
+voltage_label = customtkinter.CTkLabel(master=frame_status_voltage ,text="Voltage :", font=("Courier", 20, "bold"))
+voltage_label.place(relx=0.1,rely=0.3)
+
+frame_status_current = customtkinter.CTkFrame(master=app, height=60,width=295)
+frame_status_current.place(x=585,y=377)
+current_label = customtkinter.CTkLabel(master=frame_status_current ,text="Current :", font=("Courier", 20, "bold"))
+current_label.place(relx=0.1,rely=0.3)
+
+frame_status_energy = customtkinter.CTkFrame(master=app, height=60,width=295)
+frame_status_energy.place(x=585,y=448)
+energy_label = customtkinter.CTkLabel(master=frame_status_energy ,text="Energy  :", font=("Courier", 20, "bold"))
+energy_label.place(relx=0.1,rely=0.3)
+
+frame_status_pf = customtkinter.CTkFrame(master=app, height=60,width=295)
+frame_status_pf.place(x=585,y=520)
+pf_label = customtkinter.CTkLabel(master=frame_status_pf ,text="PF      :", font=("Courier", 20, "bold"))
+pf_label.place(relx=0.1,rely=0.3)
+
+voltage_val = customtkinter.CTkLabel(master=frame_status_voltage ,text="", font=("Courier", 20, "bold"))
+voltage_val.place(relx=0.4,rely=0.3)
+current_val = customtkinter.CTkLabel(master=frame_status_current ,text="", font=("Courier", 20, "bold"))
+current_val.place(relx=0.4,rely=0.3)
+energy_val = customtkinter.CTkLabel(master=frame_status_energy ,text="", font=("Courier", 20, "bold"))
+energy_val.place(relx=0.4,rely=0.3)
+pf_val = customtkinter.CTkLabel(master=frame_status_pf ,text="", font=("Courier", 20, "bold"))
+pf_val.place(relx=0.4,rely=0.3)
+
 
 counter = CustomCounter(frame_Control)
 counter.pack(padx=10, pady=10)
+###
 
 frame_Data1 = customtkinter.CTkFrame(master=app, height=190, width=90)
 frame_Data1.place(x=490, y=100)
