@@ -38,6 +38,20 @@ def check_stage():
         return True
     else:
         return False
+    
+def check_status():
+    count=0
+    status=["Worst","Bad","Warning!!!","Good","Quality"]
+    if sensor.get_EC()>100:
+        count+=1
+    if sensor.get_TDS()>100:
+        count+=1
+    if sensor.get_pH()<5 and sensor.get_pH()>8:
+        count+=1
+    if sensor.get_temperature()>28 and sensor.get_temperature()<22:
+        count+=1
+    return status[count]
+    
 
 
 def work():
