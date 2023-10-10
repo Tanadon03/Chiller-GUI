@@ -119,10 +119,10 @@ frame_Menu.place(x=20, y=20)
 
 #Image universities logo
 usl_logo = Image.open('D:/Project/Basic_GUI/Project/Seal_of_King_Mongkut.png')
-usl_logo = usl_logo.resize((160,160))
+usl_logo = usl_logo.resize((150,150))
 usl_Image = ImageTk.PhotoImage(usl_logo)
-img_label = tk.Label(master=app,image=usl_Image,width=160,height=160,bg="#2B2B2B")
-img_label.place(x=50,y=50)
+img_label = tk.Label(master=frame_Menu,image=usl_Image,width=150,height=150,bg="#2B2B2B")
+img_label.place(x=10,y=15)
 
 # Create a button to toggle appearance mode
 toggle_button = customtkinter.CTkButton(master=frame_Menu, text="Switch Theme", command=toggle_appearance_mode,width=140,height=40)
@@ -138,20 +138,20 @@ info_button.place(relx=0.5, y=460, anchor="center")
 frame_Time = customtkinter.CTkFrame(master=app, height=60, width=260)
 frame_Time.place(x=210, y=20)
 # Create a label to display the timestamp
-timestamp_label = customtkinter.CTkLabel(master=frame_Time, text="", font=("Arial", 20))
+timestamp_label = customtkinter.CTkLabel(master=frame_Time, text="", font=("Courier", 20, "bold"))
 timestamp_label.place(relx=0.5, rely=0.5, anchor="center")
 
 frame_electricity_charge = customtkinter.CTkFrame(master=app, height=60, width=190)
 frame_electricity_charge.place(x=690,y=20)
-electricity_charge_val = customtkinter.CTkLabel(master=frame_electricity_charge ,text="", font=("Arial", 22))
+electricity_charge_val = customtkinter.CTkLabel(master=frame_electricity_charge ,text="", font=("Courier", 22))
 electricity_charge_val.place(relx=0.2,rely=0.275)
-electricity_charge_label = customtkinter.CTkLabel(master=frame_electricity_charge, text="Watt", font=("Arial", 22))
+electricity_charge_label = customtkinter.CTkLabel(master=frame_electricity_charge, text="Watt", font=("Courier", 22, "bold"))
 electricity_charge_label.place(relx=0.45, rely=0.275)
 
 
 frame_Dashboard = customtkinter.CTkFrame(master=app, height=60, width=190)
 frame_Dashboard.place(x=490, y=20)
-title = customtkinter.CTkLabel(master=frame_Dashboard, text="DATA", font=("Arial", 20))
+title = customtkinter.CTkLabel(master=frame_Dashboard, text="DATA", font=("Courier", 24, "bold"))
 title.place(relx=0.5, rely=0.5, anchor="center")
 
 frame_Control = customtkinter.CTkFrame(master=app)#, height=190, width=260
@@ -162,30 +162,30 @@ counter.pack(padx=10, pady=10)
 
 frame_Data1 = customtkinter.CTkFrame(master=app, height=190, width=90)
 frame_Data1.place(x=490, y=100)
-Temp = customtkinter.CTkLabel(master=frame_Data1, text="Temp", font=("Arial", 18))
+Temp = customtkinter.CTkLabel(master=frame_Data1, text="Temp", font=("Courier", 22, "bold"))
 Temp.place(relx=0.25, rely=0.2)
-Temp_val = customtkinter.CTkLabel(master=frame_Data1 ,text="", font=("Arial", 18))
+Temp_val = customtkinter.CTkLabel(master=frame_Data1 ,text="", font=("Courier", 18))
 Temp_val.place(relx=0.3,rely=0.6)
 
 frame_Data2 = customtkinter.CTkFrame(master=app, height=190, width=90)
 frame_Data2.place(x=590, y=100)
-EC = customtkinter.CTkLabel(master=frame_Data2, text="EC", font=("Arial", 18))
+EC = customtkinter.CTkLabel(master=frame_Data2, text="EC", font=("Courier", 22, "bold"))
 EC.place(relx=0.35, rely=0.2)
-EC_val = customtkinter.CTkLabel(master=frame_Data2 ,text="", font=("Arial", 18))
+EC_val = customtkinter.CTkLabel(master=frame_Data2 ,text="", font=("Courier", 18))
 EC_val.place(relx=0.25,rely=0.6)
 
 frame_Data3 = customtkinter.CTkFrame(master=app, height=190, width=90)
 frame_Data3.place(x=690, y=100)
-TDS = customtkinter.CTkLabel(master=frame_Data3, text="TDS", font=("Arial", 18))
+TDS = customtkinter.CTkLabel(master=frame_Data3, text="TDS", font=("Courier", 22, "bold"))
 TDS.place(relx=0.3, rely=0.2)
-TDS_val = customtkinter.CTkLabel(master=frame_Data3 ,text="", font=("Arial", 18))
+TDS_val = customtkinter.CTkLabel(master=frame_Data3 ,text="", font=("Courier", 18))
 TDS_val.place(relx=0.25,rely=0.6)
 
 frame_Data4 = customtkinter.CTkFrame(master=app, height=190, width=90)
 frame_Data4.place(x=790, y=100)
-pH = customtkinter.CTkLabel(master=frame_Data4, text="pH", font=("Arial", 18))
+pH = customtkinter.CTkLabel(master=frame_Data4, text="pH", font=("Courier", 22, "bold"))
 pH.place(relx=0.35, rely=0.2)
-pH_val = customtkinter.CTkLabel(master=frame_Data4 ,text="", font=("Arial", 18))
+pH_val = customtkinter.CTkLabel(master=frame_Data4 ,text="", font=("Courier", 18))
 pH_val.place(relx=0.3,rely=0.6)
 
 frame_Graph = customtkinter.CTkFrame(master=app, height=265, width=670)
