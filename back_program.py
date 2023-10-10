@@ -36,7 +36,7 @@ def check_stage():
     
 def check_status():
     count=0
-    status=["Worst","Bad","Warning!!!","Good","Quality"]
+    status=["Worst","Bad","Warning","Good","Quality"]
     if sensor.get_EC()>100:
         count+=1
     if sensor.get_TDS()>100:
