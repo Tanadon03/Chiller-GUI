@@ -1,11 +1,11 @@
 from pymodbus.client import ModbusSerialClient
 import queue
 
-temperature=None
-pH=None
-calibration_fluid_EC=None
-EC=None
-TDS=None
+temperature=0
+pH=7
+calibration_fluid_EC=0
+EC=0
+TDS=0
 
 update_Q=queue.Queue()
 

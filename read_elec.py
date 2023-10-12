@@ -3,12 +3,12 @@ import modbus_tk.defines as cst
 from modbus_tk import modbus_rtu
 import queue
 
-Voltage=None
-Current=None
-Power=None
-Energy=None
-Frequency=None
-PF=None
+Voltage=0
+Current=0
+Power=0
+Energy=0
+Frequency=0
+PF=0
 
 Q=queue.Queue()
 

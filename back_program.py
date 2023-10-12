@@ -9,6 +9,7 @@ temp_tank = None
 temp_set = 25
 Range_val = 0.5
 stage = True
+ST=""
 
 # Create a queue for communication between threads
 update_queue = queue.Queue()
@@ -36,15 +37,17 @@ def check_stage():
     
 def check_status():
     count=0
+    global ST
     status=["Worst","Bad","Warning","Good","Quality"]
-    if sensor.get_EC()>100:
+    if sensor.get_EC()<100:
         count+=1
-    if sensor.get_TDS()>100:
+    if sensor.get_TDS()<100:
         count+=1
-    if sensor.get_pH()<5 and sensor.get_pH()>8:
+    if sensor.get_pH()<5 and sensor.get_pH()>10:
         count+=1
     if sensor.get_temperature()>28 and sensor.get_temperature()<22:
         count+=1
+    ST=status[count]
     return status[count]
     
 
@@ -79,7 +82,7 @@ def work():
         #print(sensor.get_temperature())
         
         temp_tank=sensor.temperature
-        if temp_tank - temp_set >= range_val:
+        if temp_tank - temp_set >= Range_val:
             set_stage(1)
         elif temp_tank - temp_set < 0:
             set_stage(0)

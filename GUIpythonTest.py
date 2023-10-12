@@ -47,10 +47,10 @@ def update_sensorvalue():
     electricity_charge_val.configure(text=el.get_power())
 
     #update
-    voltage_val.configure(text=":      {}".format(el.get_voltage()))
-    current_val.configure(text=":      {}".format(el.get_current()))
-    energy_val.configure(text=":      {}".format(el.get_energy()))
-    pf_val.configure(text=":      {}".format(el.get_powerfactor()))
+    voltage_val.configure(text=el.get_voltage())
+    current_val.configure(text=el.get_current())
+    energy_val.configure(text=el.get_energy())
+    pf_val.configure(text=el.get_powerfactor())
     status_val.configure(text=bp.check_status())
 
     
