@@ -21,10 +21,12 @@ def sent_data_to_nodered():
     
     data_elec="{{\"Voltage\":\"{v}\",\"Current\":\"{c}\",\"Power\":\"{p}\",\"Energy\":\"{e}\",\"Powerfactor\":\"{pf}\",\"Frequency\":\"{f}\"}}".format(v=V,c=C,p=P,e=E,pf=PF,f=F)
     data_water="{{\"Temperature\":\"{t}\",\"pH\":\"{ph}\",\"Calibration\":\"{c}\",\"EC\":\"{ec}\",\"TDS\":\"{tds}\"}}".format(t=Temp,ph=pH,c=calibration,ec=EC,tds=TDS)
+    all_data="{{\"Voltage\":\"{v}\",\"Current\":\"{c}\",\"Power\":\"{p}\",\"Energy\":\"{e}\",\"Powerfactor\":\"{pf}\",\"Frequency\":\"{f}\",\"Temperature\":\"{t}\",\"pH\":\"{ph}\",\"Calibration\":\"{c}\",\"EC\":\"{ec}\",\"TDS\":\"{tds}\"}}".format(v=V,c=C,p=P,e=E,pf=PF,f=F,t=Temp,ph=pH,c=calibration,ec=EC,tds=TDS)
     
     try:
         publish.single("chiller/data/elec",data_elec,hostname="127.0.0.1")
         publish.single("chiller/data/water_quality",data_water,hostname="127.0.0.1")
+        publish.single("chiller/data/All",all_data,hostname="127.0.0.1")
         print("All data have already sent")
     except:
         print("The node isn't connect")
