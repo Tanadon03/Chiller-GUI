@@ -10,7 +10,6 @@ import read_sensor as read
 import read_elec as el
 # from PIL import Image
 # from PIL import ImageTk
-# import matplotlib.pyplot as plt
 
 app = customtkinter.CTk()
 # Set the initial appearance mode
@@ -193,8 +192,8 @@ frame_status_display = customtkinter.CTkFrame(master=app ,height=190, width=260)
 frame_status_display.place(x=210, y=95)
 status_Label = customtkinter.CTkLabel(master=frame_status_display,text="STATUS", font=("Courier", 24, "bold"))
 status_Label.place(x=20, y=20)
-status_val = customtkinter.CTkLabel(master=frame_status_display, font=("Courier", 28, "bold"))
-status_val.place(relx=0.35, rely=0.45)
+status_val = customtkinter.CTkLabel(master=frame_status_display, font=("Courier", 36, "bold"))
+status_val.place(relx=0.5, rely=0.5, anchor="center")
 status = bp.check_status()
 
 #####update
